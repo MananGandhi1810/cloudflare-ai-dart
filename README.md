@@ -1,2 +1,2 @@
-# Cloudflare-AI-Flutter
-A Flutter client for using the Cloudflare AI API.
+# Cloudflare-AI-Dart
+A Dart client for accessing the Cloudflare AI API.

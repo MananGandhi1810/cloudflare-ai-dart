@@ -68,7 +68,7 @@ Supported Models:
 ## Features
 
 - [x] Text Generation
+- [x] Text Summarization
 - [ ] Image Generation
 - [ ] Text Classification
 - [ ] Image Classification
-- [ ] Text Sentiment Analysis

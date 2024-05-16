@@ -23,12 +23,8 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v2.0
-        with:
-          envkey_ACCOUNTID: ${{ secrets.ACCOUNTID }}
-          envkey_APIKEY: ${{ secrets.APIKEY }}
-          file_name: .env
-
       - name: Run tests
         run: dart test
+        env:
+          ACCOUNTID: ${{ secrets.ACCOUNTID }}
+          APIKEY: ${{ secrets.APIKEY }}

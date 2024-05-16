@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Text Generation Models', () {
-    final env = DotEnv()..load();
+    final env = DotEnv(includePlatformEnvironment: true)..load();
     String accountId = env['accountId'] ?? "";
     String apiKey = env['apiKey'] ?? "";
     test(

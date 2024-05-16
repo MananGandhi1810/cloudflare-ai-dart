@@ -92,6 +92,9 @@ void main() async {
 }
 ```
 
+Supported Models:
+- BART_LARGE_CNN
+
 ## Features
 
 - [x] Text Generation

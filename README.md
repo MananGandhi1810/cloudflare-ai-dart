@@ -85,7 +85,7 @@ void main() async {
     );
 
   if (res.success) {
-    print(res.result.summary);
+    print(res.result.response);
   } else {
     print(res.errors);
   }

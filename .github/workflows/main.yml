@@ -23,8 +23,11 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
+      - name: Add .env file
+        run: |
+          touch .env
+          echo ACCOUNT_ID=${{ secrets.ACCOUNTID }} >> .env
+          echo API_KEY=${{ secrets.APIKEY }} >> .env
+
       - name: Run tests
-        env:
-          ACCOUNTID: ${{ secrets.ACCOUNTID }}
-          APIKEY: ${{ secrets.APIKEY }}
         run: dart test

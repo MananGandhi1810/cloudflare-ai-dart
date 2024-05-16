@@ -28,6 +28,7 @@ jobs:
         with:
           ENV_ACCOUNTID: ${{ secrets.ACCOUNTID }}
           ENV_APIKEY: ${{ secrets.APIKEY }}
+          file-name: .env
 
       - name: Run tests
         run: dart test

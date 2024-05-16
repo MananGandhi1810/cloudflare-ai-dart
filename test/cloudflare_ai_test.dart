@@ -9,6 +9,7 @@ void main() {
     final env = DotEnv(includePlatformEnvironment: true)..load();
     String accountId = env['ACCOUNTID'] ?? "";
     String apiKey = env['APIKEY'] ?? "";
+    print(accountId);
     test(
       "Gemma 7B IT: Generate Content",
       () async {

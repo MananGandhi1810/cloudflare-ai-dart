@@ -1,20 +1,46 @@
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 
 void main() async {
+  String accountId = "Your Account ID";
+  String apiKey = "Your API Key";
+
+  // Text Generation
   // Initialize a TextGenerationModel
-  TextGenerationModel model = TextGenerationModel(
-    accountId: "Your Account ID",
-    apiKey: "Your API Key",
+  TextGenerationModel textGenModel = TextGenerationModel(
+    accountId: accountId,
+    apiKey: apiKey,
     model: TextGenerationModels.GEMMA_7B_IT,
   );
 
   // Generate Text for a prompt
-  TextGenerationResponse res = await model
+  TextGenerationResponse textGenRes = await textGenModel
       .generateText("Write a story about a robot, living on the moon");
 
-  if (res.success) {
-    print(res.result.response);
+  if (textGenRes.success) {
+    print(textGenRes.result.response);
   } else {
-    print(res.errors);
+    print(textGenRes.errors);
+  }
+
+  // Text Summarization
+  // Initialize a TextSummarizationModel
+  TextSummarizationModel textSummarizationModel = TextSummarizationModel(
+    accountId: accountId,
+    apiKey: apiKey,
+    model: TextSummarizationModels
+        .BART_LARGE_CNN, // Bart Large CNN is default, hence this parameter is optional
+  );
+
+  // Summarize Text
+  TextSummarizationResponse textSummarizationRes =
+      await textSummarizationModel.summarize(
+    "Your very long text....",
+    maxLength: 1024, // 1024 is default, hence this parameter is optional
+  );
+
+  if (textGenRes.success) {
+    print(textGenRes.result.response);
+  } else {
+    print(textGenRes.errors);
   }
 }

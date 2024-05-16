@@ -24,11 +24,11 @@ jobs:
         run: dart pub get
 
       - name: Create .env file
-        uses: ozaytsev86/create-env-file@v1
+        uses: SpicyPizza/create-envfile@v2.0
         with:
-          ENV_ACCOUNTID: ${{ secrets.ACCOUNTID }}
-          ENV_APIKEY: ${{ secrets.APIKEY }}
-          file-name: .env
+          envkey_ACCOUNTID: ${{ secrets.ACCOUNTID }}
+          envkey_APIKEY: ${{ secrets.APIKEY }}
+          file_name: .env
 
       - name: Run tests
         run: dart test

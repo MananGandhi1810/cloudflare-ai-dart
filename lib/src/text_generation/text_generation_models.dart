@@ -12,7 +12,7 @@ enum TextGenerationModelsEnum {
   LLAMA_GUARD_7B("@hf/thebloke/llamaguard-7b-awq"),
   DEEPSEEK_CODER_6_7_BASE("@hf/thebloke/deepseek-coder-6.7b-base-awq"),
   DEEPSEEK_CODER_6_7_INSTRUCT("@hf/thebloke/deepseek-coder-6.7b-instruct-awq"),
-  DEEPSEEK_MATH_7B_BASE("@@cf/deepseek-ai/deepseek-math-7b-base"),
+  DEEPSEEK_MATH_7B_BASE("@cf/deepseek-ai/deepseek-math-7b-base"),
   DEEPSEEK_MATH_7B_INSTRUCT("@cf/deepseek-ai/deepseek-math-7b-instruct"),
   OPENCHAT_3_5("@cf/openchat/openchat-3.5-0106"),
   PHI_2("@cf/phi/phi-2"),

@@ -29,12 +29,12 @@ void main() {
     );
 
     test(
-      "Llama 2 7b Instruct: Generate Content",
+      "Hermes 2 Pro 7b Instruct: Generate Content",
       () async {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
           apiKey: apiKey,
-          model: TextGenerationModelsEnum.LLAMA_2_7B,
+          model: TextGenerationModelsEnum.HERMES_2_PRO_7B,
         );
         TextGenerationResponseModel res = await model.generateText("Hello!");
         expect(res.result.response, isNotNull);

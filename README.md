@@ -65,6 +65,33 @@ Supported Models:
 - STARLING_LM_7B_BETA
 - SQL_CODER_7B_2
 
+### Text Summarization
+
+```dart
+import 'package:cloudflare_ai/cloudflare_ai.dart';
+
+void main() async {
+  // Initialize a TextSummarizationModel
+  TextSummarizationModel model = TextSummarizationModel(
+    accountId: "Your Account ID",
+    apiKey: "Your API Key",
+    model: TextSummarizationModels.BART_LARGE_CNN,
+  );
+
+  // Summarize Text
+  TextSummarizationResponse res = await model.summarize(
+      "The quick brown fox jumps over the lazy dog",
+      maxLength: 10,
+    );
+
+  if (res.success) {
+    print(res.result.summary);
+  } else {
+    print(res.errors);
+  }
+}
+```
+
 ## Features
 
 - [x] Text Generation

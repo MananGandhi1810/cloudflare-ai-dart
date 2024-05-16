@@ -38,9 +38,9 @@ void main() async {
     maxLength: 1024, // 1024 is default, hence this parameter is optional
   );
 
-  if (textGenRes.success) {
-    print(textGenRes.result.response);
+  if (textSummarizationRes.success) {
+    print(textSummarizationRes.result.response);
   } else {
-    print(textGenRes.errors);
+    print(textSummarizationRes.errors);
   }
 }

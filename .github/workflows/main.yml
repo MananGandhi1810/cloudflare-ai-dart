@@ -26,8 +26,8 @@ jobs:
       - name: Add .env file
         run: |
           touch .env
-          echo ACCOUNT_ID=${{ secrets.ACCOUNTID }} >> .env
-          echo API_KEY=${{ secrets.APIKEY }} >> .env
+          echo ACCOUNTID=${{ secrets.ACCOUNTID }} >> .env
+          echo APIKEY=${{ secrets.APIKEY }} >> .env
 
       - name: Run tests
         run: dart test

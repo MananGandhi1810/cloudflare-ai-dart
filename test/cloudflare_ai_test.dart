@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 import 'package:cloudflare_ai/src/text_generation/response.dart';
-import 'package:cloudflare_ai/src/text_generation/text_generation_models.dart';
+import 'package:cloudflare_ai/src/text_generation/models.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -17,7 +17,7 @@ void main() {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
           apiKey: apiKey,
-          model: TextGenerationModelsEnum.GEMMA_7B_IT,
+          model: TextGenerationModels.GEMMA_7B_IT,
         );
         TextGenerationResponse res = await model.generateText("Hello!");
         expect(res.result.response, isNotNull);
@@ -34,7 +34,7 @@ void main() {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
           apiKey: apiKey,
-          model: TextGenerationModelsEnum.HERMES_2_PRO_7B,
+          model: TextGenerationModels.HERMES_2_PRO_7B,
         );
         TextGenerationResponse res = await model.generateText("Hello!");
         expect(res.result.response, isNotNull);

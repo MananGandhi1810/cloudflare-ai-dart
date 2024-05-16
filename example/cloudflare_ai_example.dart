@@ -5,7 +5,7 @@ void main() async {
   TextGenerationModel model = TextGenerationModel(
     accountId: "Your Account ID",
     apiKey: "Your API Key",
-    model: TextGenerationModelsEnum.GEMMA_7B_IT,
+    model: TextGenerationModels.GEMMA_7B_IT,
   );
 
   // Generate Text for a prompt

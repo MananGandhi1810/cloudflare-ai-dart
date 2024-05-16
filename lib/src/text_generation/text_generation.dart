@@ -1,15 +1,15 @@
 import 'response.dart';
 
 import '../services/network_service.dart';
-import 'text_generation_models.dart';
+import 'models.dart';
 
-export 'text_generation_models.dart';
+export 'models.dart';
 export 'response.dart';
 
 class TextGenerationModel {
   late String accountId;
   late String apiKey;
-  late TextGenerationModelsEnum model;
+  late TextGenerationModels model;
   late bool raw;
   NetworkService networkService = NetworkService();
   late String baseUrl;

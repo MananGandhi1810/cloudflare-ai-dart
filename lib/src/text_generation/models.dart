@@ -1,4 +1,4 @@
-enum TextGenerationModelsEnum {
+enum TextGenerationModels {
   LLAMA_2_7B("@cf/meta/llama-2-7b-chat-fp16"),
   LLAMA_2_7B_INT8("@cf/meta/llama-2-7b-chat-int8"),
   MISTRAL_7B("@cf/mistral/mistral-7b-instruct-v0.1"),
@@ -33,6 +33,6 @@ enum TextGenerationModelsEnum {
   STARLING_LM_7B_BETA("@hf/nexusflow/starling-lm-7b-beta"),
   SQL_CODER_7B_2("@cf/defog/sqlcoder-7b-2");
 
-  const TextGenerationModelsEnum(this.value);
+  const TextGenerationModels(this.value);
   final String value;
 }

@@ -7,8 +7,8 @@ import 'package:test/test.dart';
 void main() {
   group('Text Generation Models', () {
     final env = DotEnv(includePlatformEnvironment: true)..load();
-    String accountId = env['accountId'] ?? "";
-    String apiKey = env['apiKey'] ?? "";
+    String accountId = env['ACCOUNTID'] ?? "";
+    String apiKey = env['APIKEY'] ?? "";
     test(
       "Gemma 7B IT: Generate Content",
       () async {

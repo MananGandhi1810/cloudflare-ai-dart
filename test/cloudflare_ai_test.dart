@@ -7,9 +7,9 @@ void main() {
   final env = Platform.environment;
   String accountId = env['ACCOUNTID'] ?? "";
   String apiKey = env['APIKEY'] ?? "";
-  group('Text Generation', () {
+  group('Text Generation:', () {
     test(
-      "Gemma 7b IT: Generate Content",
+      "Gemma 7b IT",
       () async {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
@@ -26,7 +26,7 @@ void main() {
     );
 
     test(
-      "Hermes 2 Pro 7b Instruct: Generate Content",
+      "Hermes 2 Pro 7b Instruct",
       () async {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
@@ -43,7 +43,7 @@ void main() {
     );
   });
 
-  group("Text Summarization", () {
+  group("Text Summarization:", () {
     test(
       "Bart Large CNN",
       () async {

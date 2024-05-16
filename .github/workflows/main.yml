@@ -23,11 +23,11 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
-      - name: Add .env file
-        run: |
-          touch .env
-          echo ACCOUNTID=${{ secrets.ACCOUNTID }} >> .env
-          echo APIKEY=${{ secrets.APIKEY }} >> .env
+      - name: Create .env file
+        uses: ozaytsev86/create-env-file@v1
+        with:
+          ENV_ACCOUNTID: ${{ secrets.ACCOUNTID }}
+          ENV_APIKEY: ${{ secrets.APIKEY }}
 
       - name: Run tests
         run: dart test

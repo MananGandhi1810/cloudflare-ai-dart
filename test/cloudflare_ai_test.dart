@@ -1,17 +1,18 @@
+import 'dart:io';
+
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 import 'package:cloudflare_ai/src/text_generation/raw_response_model.dart';
 import 'package:cloudflare_ai/src/text_generation/text_generation_models.dart';
-import 'package:dotenv/dotenv.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Text Generation Models', () {
-    final env = DotEnv(includePlatformEnvironment: true)..load();
+    final env = Platform.environment;
     String accountId = env['ACCOUNTID'] ?? "";
     String apiKey = env['APIKEY'] ?? "";
-    print(accountId);
+
     test(
-      "Gemma 7B IT: Generate Content",
+      "Gemma 7b IT: Generate Content",
       () async {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
@@ -28,12 +29,12 @@ void main() {
     );
 
     test(
-      "Falcon 7B Instruct: Generate Content",
+      "Llama 2 7b Instruct: Generate Content",
       () async {
         TextGenerationModel model = TextGenerationModel(
           accountId: accountId,
           apiKey: apiKey,
-          model: TextGenerationModelsEnum.FALCON_7B_INSTRUCT,
+          model: TextGenerationModelsEnum.LLAMA_2_7B,
         );
         TextGenerationResponseModel res = await model.generateText("Hello!");
         expect(res.result.response, isNotNull);

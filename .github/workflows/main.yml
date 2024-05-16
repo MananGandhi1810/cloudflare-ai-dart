@@ -25,9 +25,8 @@ jobs:
 
       - name: Add .env file
         run: |
-          touch .env
-          echo ${{ secrets.ENV_FILE }} > .env
-          cat .env
+          export ACCOUNTID=${{ secrets.ACCOUNTID }}
+          export APIKEY=${{ secrets.APIKEY }}
 
       - name: Run tests
         run: dart test

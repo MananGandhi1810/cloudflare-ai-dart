@@ -6,7 +6,7 @@
 
 - Updated platforms in pubspec.yaml.
 
-## 1.0.0+2
+## 1.0.1
 
 - Updated pubspec.yaml with better description.
 - Added comments for readability.

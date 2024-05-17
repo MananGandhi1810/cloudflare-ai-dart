@@ -29,7 +29,8 @@ class TextGenerationModel {
       "prompt": prompt,
       "raw": raw,
     });
-    TextGenerationResponse response = TextGenerationResponse.fromJson(res['data']);
+    TextGenerationResponse response =
+        TextGenerationResponse.fromJson(res['data']);
     return response;
   }
 }

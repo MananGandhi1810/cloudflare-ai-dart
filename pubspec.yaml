@@ -1,8 +1,7 @@
 name: cloudflare_ai
 description: A dart client to access the Cloudflare Workers AI API. Currently supports Text Generation, Text Summarization, and Image Generation.
-version: 1.0.0+1
+version: 1.0.0+2
 repository: https://github.com/MananGandhi1810/cloudflare-ai-dart
-publish_to: https://pub.dev/packages/cloudflare_ai
 
 environment:
   sdk: '>=2.18.0 <4.0.0'

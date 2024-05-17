@@ -1,5 +1,5 @@
 name: cloudflare_ai
-description: A dart client to access the Cloudflare Workers AI API. Currently supports Text Generation, Text Summarization, and Image Generation.
+description: This is a Dart package for Cloudflare AI. It provides a simple Dart API to interact with Cloudflare AI. It is built on top of the Dio package. It currently supports Text Generation and Image Generation, Text Summarization, and Image Generation Models. Feel free to contribute to this project through Issues and Pull Requests.
 version: 1.0.0+2
 repository: https://github.com/MananGandhi1810/cloudflare-ai-dart
 

@@ -9,3 +9,4 @@
 ## 1.0.0+2
 
 - Updated pubspec.yaml with better description.
+- Added comments for readability.

@@ -1,3 +1,4 @@
+// Defines Repsonse received from the API
 class TextGenerationResponse {
   late TextGenerationResult result;
   late bool success;

@@ -1,3 +1,4 @@
+// Defines the models, and specifies path to them in the API Endpoint
 enum TextGenerationModels {
   LLAMA_2_7B("@cf/meta/llama-2-7b-chat-fp16"),
   LLAMA_2_7B_INT8("@cf/meta/llama-2-7b-chat-int8"),

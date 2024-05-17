@@ -20,6 +20,7 @@ class TextToImageModel {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
   }
 
+  // Asynchronous Function whcih returns the image in the form of Uint8List
   Future<Uint8List> generateImage(String prompt) async {
     if (prompt.trim().isEmpty) {
       throw Exception("Prompt cannot be empty");

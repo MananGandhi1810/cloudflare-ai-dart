@@ -23,6 +23,7 @@ class TextGenerationModel {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
   }
 
+  // Asynchronous function which returns generated text through the TextGenerationResponse object
   Future<TextGenerationResponse> generateText(String prompt) async {
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {

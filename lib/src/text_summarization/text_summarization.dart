@@ -20,6 +20,7 @@ class TextSummarizationModel {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
   }
 
+  // Asynchronous function which returns summarized text through the TextSummarizationResponse object
   Future<TextSummarizationResponse> summarize(String text,
       {int maxLength = 1024}) async {
     Map<String, dynamic> res =

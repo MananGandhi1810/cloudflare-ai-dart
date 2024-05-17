@@ -1,10 +1,11 @@
 name: cloudflare_ai
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: A dart client to access the Cloudflare Workers AI API. Currently supports Text Generation, Text Summarization, and Image Generation.
+version: 1.0.0+1
+repository: https://github.com/MananGandhi1810/cloudflare-ai-dart
+publish_to: https://pub.dev/packages/cloudflare_ai
 
 environment:
-  sdk: ^3.3.4
+  sdk: '>=2.18.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:
@@ -14,3 +15,12 @@ dependencies:
 dev_dependencies:
   lints: ^3.0.0
   test: ^1.24.0
+
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:

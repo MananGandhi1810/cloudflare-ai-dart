@@ -15,3 +15,7 @@
 
 - Updated pubspec.yaml with better description.
 - Added comments for readability.
+
+## 1.0.1+2
+
+- Generated documentation for the package.

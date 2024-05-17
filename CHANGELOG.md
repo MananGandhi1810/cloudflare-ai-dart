@@ -14,3 +14,4 @@
 ## 1.0.1+1
 
 - Updated pubspec.yaml with better description.
+- Added comments for readability.

@@ -7,10 +7,9 @@ export 'models.dart';
 export 'response.dart';
 
 class TextGenerationModel {
-  late String accountId;
-  late String apiKey;
-  late TextGenerationModels model;
-  late bool raw;
+  late String accountId; // Account ID, available on Cloudflare daskboard
+  late String apiKey; // API Key, can by generated from the Cloudflare dashboard
+  late TextGenerationModels model; // The model to use
   NetworkService networkService = NetworkService();
   late String baseUrl;
 
@@ -18,7 +17,6 @@ class TextGenerationModel {
     required this.accountId,
     required this.apiKey,
     required this.model,
-    this.raw = true,
   }) {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
   }
@@ -28,7 +26,6 @@ class TextGenerationModel {
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {
       "prompt": prompt,
-      "raw": raw,
     });
     TextGenerationResponse response =
         TextGenerationResponse.fromJson(res['data']);

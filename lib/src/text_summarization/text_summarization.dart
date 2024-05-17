@@ -6,9 +6,9 @@ export 'models.dart';
 export 'response.dart';
 
 class TextSummarizationModel {
-  late String accountId;
-  late String apiKey;
-  late TextSummarizationModels model;
+  late String accountId; // Account ID, available on Cloudflare daskboard
+  late String apiKey; // API Key, can by generated from the Cloudflare dashboard
+  late TextSummarizationModels model; // The model to use
   NetworkService networkService = NetworkService();
   late String baseUrl;
 

@@ -6,9 +6,9 @@ import 'models.dart';
 export 'models.dart';
 
 class TextToImageModel {
-  late String accountId;
-  late String apiKey;
-  late TextToImageModels model;
+  late String accountId; // Account ID, available on Cloudflare daskboard
+  late String apiKey; // API Key, can by generated from the Cloudflare dashboard
+  late TextToImageModels model; // The model to use
   NetworkService networkService = NetworkService();
   late String baseUrl;
 

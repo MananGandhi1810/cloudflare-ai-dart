@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 
 void main() async {
@@ -43,4 +46,19 @@ void main() async {
   } else {
     print(textSummarizationRes.errors);
   }
+
+  // Text to Image
+  // Initialize a TextToImageModel
+  TextToImageModel textToImageModel = TextToImageModel(
+    accountId: accountId,
+    apiKey: apiKey,
+    model: TextToImageModels.DREAMSHAPER_8_LCM,
+  );
+
+  // Generate Image
+  Uint8List textToImageResult =
+      await textToImageModel.generateImage("An alien on the moon");
+
+  // Save the image to a file
+  File("image.png").writeAsBytes(textToImageResult);
 }

@@ -9,7 +9,6 @@ class TextSummarizationModel {
   late String accountId;
   late String apiKey;
   late TextSummarizationModels model;
-  late bool raw;
   NetworkService networkService = NetworkService();
   late String baseUrl;
 
@@ -17,7 +16,6 @@ class TextSummarizationModel {
     required this.accountId,
     required this.apiKey,
     this.model = TextSummarizationModels.BART_LARGE_CNN,
-    this.raw = true,
   }) {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
   }
@@ -30,7 +28,7 @@ class TextSummarizationModel {
       "max_length": maxLength,
     });
     TextSummarizationResponse response =
-        TextSummarizationResponse.fromJson(res);
+        TextSummarizationResponse.fromJson(res['data']);
     return response;
   }
 }

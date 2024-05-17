@@ -1,12 +1,13 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 import 'package:test/test.dart';
 
 void main() {
   final env = Platform.environment;
-  String accountId = env['ACCOUNTID'] ?? "";
-  String apiKey = env['APIKEY'] ?? "";
+  String accountId = env['ACCOUNTID'] ?? "Your Account ID";
+  String apiKey = env['APIKEY'] ?? "Your API Key";
   group('Text Generation:', () {
     test(
       "Gemma 7b IT",
@@ -70,5 +71,41 @@ And so, with a newfound appreciation for the beauty of Earth and its inhabitants
         Duration(minutes: 3),
       ),
     );
+  });
+
+  group("Text To Image:", () {
+    test("DreamShaper 8 LCM (Empty Prompt)", () {
+      expect(
+        () async {
+          TextToImageModel model = TextToImageModel(
+            accountId: accountId,
+            apiKey: apiKey,
+            model: TextToImageModels.DREAMSHAPER_8_LCM,
+          );
+          await model.generateImage("");
+        },
+        throwsException,
+      );
+    });
+
+    test("DreamShaper 8 LCM", () async {
+      TextToImageModel model = TextToImageModel(
+        accountId: accountId,
+        apiKey: apiKey,
+        model: TextToImageModels.DREAMSHAPER_8_LCM,
+      );
+      Uint8List res = await model.generateImage("An alien on the moon");
+      expect(res, isNotNull);
+    });
+
+    test("Stable Diffusion XL Base 1", () async {
+      TextToImageModel model = TextToImageModel(
+        accountId: accountId,
+        apiKey: apiKey,
+        model: TextToImageModels.STABLE_DIFFUSION_XL_BASE_1,
+      );
+      Uint8List res = await model.generateImage("An alien on the moon");
+      expect(res, isNotNull);
+    });
   });
 }

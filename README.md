@@ -95,10 +95,36 @@ void main() async {
 Supported Models:
 - BART_LARGE_CNN
 
+### Text To Image
+
+```dart
+import 'package:cloudflare_ai/cloudflare_ai.dart';
+
+void main() async {
+  // Initialize a TextToImageModel
+  TextToImageModel model = TextToImageModel(
+    accountId: "Your Account ID",
+    apiKey: "Your API Key"
+    model: TextToImageModels.DREAMSHAPER_8_LCM,
+  );
+
+  // Generate Image from Text
+  TextToImageResponse res = await model.generateImage("A beautiful sunset over the ocean");
+
+  // Save Image to File
+  res.saveImage("sunset.jpg");
+}
+```
+
+Supported Models:
+- DREAMSHAPER_8_LCM
+- STABLE_DIFFUSION_XL_BASE_1
+- STABLE_DIFFUSION_XL_LIGHTNING
+
 ## Features
 
 - [x] Text Generation
 - [x] Text Summarization
-- [ ] Image Generation
+- [x] Image Generation
 - [ ] Text Classification
 - [ ] Image Classification

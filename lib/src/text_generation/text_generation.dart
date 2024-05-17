@@ -29,7 +29,7 @@ class TextGenerationModel {
       "prompt": prompt,
       "raw": raw,
     });
-    TextGenerationResponse response = TextGenerationResponse.fromJson(res);
+    TextGenerationResponse response = TextGenerationResponse.fromJson(res['data']);
     return response;
   }
 }

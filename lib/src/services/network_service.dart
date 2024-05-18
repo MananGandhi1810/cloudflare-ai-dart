@@ -16,6 +16,7 @@ class NetworkService {
           "Authorization": "Bearer $apiKey",
         },
         responseType: isImage ? ResponseType.bytes : null,
+        validateStatus: (status) => true,
       ),
       data: data,
     );

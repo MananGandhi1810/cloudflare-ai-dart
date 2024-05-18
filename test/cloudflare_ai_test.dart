@@ -26,6 +26,23 @@ void main() {
     );
 
     test(
+      "Gemma 7b IT (Empty Prompt)",
+      () async {
+        TextGenerationModel model = TextGenerationModel(
+          accountId: accountId,
+          apiKey: apiKey,
+          model: TextGenerationModels.GEMMA_7B_IT,
+        );
+        TextGenerationResponse res = await model.generateText("");
+        expect(res.result.response, null);
+        expect(res.success, false);
+      },
+      timeout: Timeout(
+        Duration(minutes: 3),
+      ),
+    );
+
+    test(
       "Hermes 2 Pro 7b Instruct",
       () async {
         TextGenerationModel model = TextGenerationModel(

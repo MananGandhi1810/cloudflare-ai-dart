@@ -1,8 +1,10 @@
 // Defines Repsonse received from the API
+import '../models/error.dart';
+
 class TextGenerationResponse {
   late TextGenerationResult result;
   late bool success;
-  late List errors;
+  late List<ErrorModel> errors;
   late List messages;
 
   TextGenerationResponse({
@@ -18,7 +20,9 @@ class TextGenerationResponse {
   TextGenerationResponse.fromJson(Map<String, dynamic> json) {
     result = TextGenerationResult.fromJson(json['result']);
     success = json['success'];
-    errors = json['errors'];
+    errors = (json['errors'] as List)
+        .map((e) => ErrorModel.fromJson(e))
+        .toList();
     messages = json['messages'];
   }
 
@@ -26,7 +30,7 @@ class TextGenerationResponse {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['result'] = result.toJson();
     data['success'] = success;
-    data['errors'] = errors;
+    data['errors'] = errors.map((e) => e.toJson()).toList();
     data['messages'] = messages;
     return data;
   }

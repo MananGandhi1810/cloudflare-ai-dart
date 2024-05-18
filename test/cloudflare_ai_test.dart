@@ -1,13 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 import 'package:test/test.dart';
 
 void main() {
   final env = Platform.environment;
-  String accountId = env['ACCOUNTID'] ?? "Your Account ID";
-  String apiKey = env['APIKEY'] ?? "Your API Key";
+  String accountId = env['ACCOUNTID'] ?? "";
+  String apiKey = env['APIKEY'] ?? "";
   group('Text Generation:', () {
     test(
       "Gemma 7b IT",
@@ -107,5 +106,25 @@ And so, with a newfound appreciation for the beauty of Earth and its inhabitants
       Uint8List res = await model.generateImage("An alien on the moon");
       expect(res, isNotNull);
     });
+  });
+  group('Text Classification:', () {
+    test(
+      "Distilbert sst 2 int8",
+      () async {
+        TextClassificationModel model = TextClassificationModel(
+          accountId: accountId,
+          apiKey: apiKey,
+          model: TextClassificationModels.DISTILBERT_SST_2_INT8,
+        );
+        TextClassificationResponse res =
+            await model.classifyText("Hello this is good");
+        expect(res.result.positive, isNotNull);
+        expect(res.result.negative, isNotNull);
+        expect(res.success, true);
+      },
+      timeout: Timeout(
+        Duration(minutes: 3),
+      ),
+    );
   });
 }

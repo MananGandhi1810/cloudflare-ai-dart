@@ -1,4 +1,4 @@
-// Defines Repsonse received from the API
+// Defines Response received from the API
 class TextSummarizationResponse {
   late TextSummarizationResult result;
   late bool success;

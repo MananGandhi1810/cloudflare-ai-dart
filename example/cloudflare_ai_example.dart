@@ -1,11 +1,10 @@
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:cloudflare_ai/cloudflare_ai.dart';
 
 void main() async {
-  String accountId = "Your Account ID";
-  String apiKey = "Your API Key";
+  String accountId = "YOUR_ACCOUNT_ID";
+  String apiKey = "YOUR_API_KEY";
 
   // Text Generation
   // Initialize a TextGenerationModel
@@ -61,4 +60,29 @@ void main() async {
 
   // Save the image to a file
   File("image.png").writeAsBytes(textToImageResult);
+
+  // Text Classification
+  // Initialize a TextClassificationModel
+  TextClassificationModel textClassificationModel = TextClassificationModel(
+      accountId: accountId,
+      apiKey: apiKey,
+      model: TextClassificationModels
+          .DISTILBERT_SST_2_INT8 // DISTILBERT_SST_2_INT8 is default, hence this parameter is optional
+      );
+
+  // Initialize TextClassificationResponse
+  TextClassificationResponse textClassificationResponse =
+      await textClassificationModel.classifyText(
+    "Test Prompt",
+  );
+
+  // Printing the output
+  if (textClassificationResponse.success) {
+    print(
+        'Positive Confidence level: ${textClassificationResponse.result.positive}');
+    print(
+        'Negative Confidence level: ${textClassificationResponse.result.negative}');
+  } else {
+    print(textSummarizationRes.errors);
+  }
 }

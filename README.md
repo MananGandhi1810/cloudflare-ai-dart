@@ -21,8 +21,8 @@ void main() async {
   TextGenerationResponse res = await model
       .generateText("Write a story about a robot, living on the moon");
 
-  if (res.success) {
-    print(res.result.response);
+  if (res.success && res.result != null) {
+    print(res.result?.response);
   } else {
     print(res.errors);
   }
@@ -84,8 +84,8 @@ void main() async {
       maxLength: 10,
     );
 
-  if (res.success) {
-    print(res.result.response);
+  if (res.success && res.result != null) {
+    print(res.result?.response);
   } else {
     print(res.errors);
   }
@@ -139,11 +139,11 @@ void main() async {
   // Classify Text
   TextClassificationResponse res = await model.classifyText("A beautiful sunset over the ocean");
 
-  if (res.success) {
+  if (res.success && res.result != null) {
     print(
-        'Positive Confidence level: ${res.result.positive}');
+        'Positive Confidence level: ${res.result?.positive}');
     print(
-        'Negative Confidence level: ${res.result.negative}');
+        'Negative Confidence level: ${res.result?.negative}');
   } else {
     print(res.errors);
   }
@@ -151,12 +151,41 @@ void main() async {
 ```
 
 Supported Models:
+
 - DISTILBERT_SST_2_INT8
+
+### Language Translation
+
+```dart
+import 'package:cloudflare_ai/cloudflare_ai.dart';
+
+void main() async {
+  // Initialize a LanguageTranslationModel
+  LanguageTranslationModel model = LanguageTranslationModel(
+    accountId: "Your Account ID",
+    apiKey: "Your API Key",
+    model: LanguageTranslationModels.M2M100_1_2B,
+  );
+
+  // Translate Text
+  LanguageTranslationResponse res = await model.translate("A beautiful sunset over the ocean", Languages.English, Languages.French);
+
+  if (res.success && res.result != null) {
+    print(res.result?.response);
+  } else {
+    print(res.errors);
+  }
+}
+```
+
+Supported Models:
+
+- M2M100_1_2B
 
 ## Features
 
 - [x] Text Generation
 - [x] Text Summarization
 - [x] Image Generation
-- [ ] Text Classification
-- [ ] Image Classification
+- [x] Text Classification
+- [x] Language Translation

@@ -23,3 +23,8 @@
 ## 1.1.0
 
 - Added support for Text Classification APIs
+
+## 1.2.0
+
+- Added support Language Translation APIs
+- Made response results nullable, to handle errors better.

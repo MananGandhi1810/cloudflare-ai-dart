@@ -18,8 +18,13 @@ class TextClassificationModel {
     this.model = TextClassificationModels.DISTILBERT_SST_2_INT8,
     this.raw = true,
   }) {
-    baseUrl =
-        "https://api.cloudflare.com//client/v4/accounts/$accountId/ai/run";
+    baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
+    if (accountId.trim() == "") {
+      throw Exception("Account ID cannot be empty");
+    }
+    if (apiKey.trim() == "") {
+      throw Exception("API Key cannot be empty");
+    }
   }
 
   // Asynchronous function which returns the classification labels with their confidence of the text

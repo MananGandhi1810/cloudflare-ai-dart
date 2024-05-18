@@ -5,8 +5,8 @@ import 'package:test/test.dart';
 
 void main() {
   final env = Platform.environment;
-  String accountId = env['ACCOUNTID'] ?? "";
-  String apiKey = env['APIKEY'] ?? "";
+  String accountId = env['ACCOUNTID'] ?? "1cce28ed87f1c4865e511c1abd3f0101";
+  String apiKey = env['APIKEY'] ?? "TxzHZU9gfVuHMVlC_M-pW1H7d9RpDE7OD_OIW2rY";
   group('Text Generation:', () {
     test(
       "Gemma 7b IT",
@@ -17,7 +17,7 @@ void main() {
           model: TextGenerationModels.GEMMA_7B_IT,
         );
         TextGenerationResponse res = await model.generateText("Hello!");
-        expect(res.result.response, isNotNull);
+        expect(res.result?.response, isNotNull);
         expect(res.success, true);
       },
       timeout: Timeout(
@@ -34,7 +34,7 @@ void main() {
           model: TextGenerationModels.GEMMA_7B_IT,
         );
         TextGenerationResponse res = await model.generateText("");
-        expect(res.result.response, null);
+        expect(res.result?.response, null);
         expect(res.success, false);
       },
       timeout: Timeout(
@@ -51,7 +51,7 @@ void main() {
           model: TextGenerationModels.HERMES_2_PRO_7B,
         );
         TextGenerationResponse res = await model.generateText("Hello!");
-        expect(res.result.response, isNotNull);
+        expect(res.result?.response, isNotNull);
         expect(res.success, true);
       },
       timeout: Timeout(
@@ -80,7 +80,7 @@ As the night descended upon the city, Zarael found themselves atop a hill overlo
 In that moment, Zarael realized that despite the differences that may exist between worlds, there was a universal thread that bound all beings together - the thread of humanity, of compassion, and of love.
 And so, with a newfound appreciation for the beauty of Earth and its inhabitants, Zarael bid farewell to India, knowing that they would carry the memories of this extraordinary journey with them forever. As they stepped back through the shimmering portal, they left behind a world forever changed by their presence, a world where the possibility of encountering the unknown was no longer a distant dream, but a tangible reality.
 """);
-        expect(res.result.response, isNotNull);
+        expect(res.result?.response, isNotNull);
         expect(res.success, true);
       },
       timeout: Timeout(
@@ -124,6 +124,7 @@ And so, with a newfound appreciation for the beauty of Earth and its inhabitants
       expect(res, isNotNull);
     });
   });
+
   group('Text Classification:', () {
     test(
       "Distilbert sst 2 int8",
@@ -135,8 +136,52 @@ And so, with a newfound appreciation for the beauty of Earth and its inhabitants
         );
         TextClassificationResponse res =
             await model.classifyText("Hello this is good");
-        expect(res.result.positive, isNotNull);
-        expect(res.result.negative, isNotNull);
+        expect(res.result?.positive, isNotNull);
+        expect(res.result?.negative, isNotNull);
+        expect(res.success, true);
+      },
+      timeout: Timeout(
+        Duration(minutes: 3),
+      ),
+    );
+  });
+
+  group('Language Translation:', () {
+    test(
+      "m2m100 1.2b (English to Hindi)",
+      () async {
+        LanguageTranslationModel model = LanguageTranslationModel(
+          accountId: accountId,
+          apiKey: apiKey,
+          model: LanguageTranslationModels.M2M100_1_2B,
+        );
+        LanguageTranslationResponse res = await model.translate(
+          "Hello!",
+          Languages.English,
+          Languages.Hindi,
+        );
+        expect(res.result?.response, isNotNull);
+        expect(res.success, true);
+      },
+      timeout: Timeout(
+        Duration(minutes: 3),
+      ),
+    );
+
+    test(
+      "m2m100 1.2b (Hindi to Marathi)",
+      () async {
+        LanguageTranslationModel model = LanguageTranslationModel(
+          accountId: accountId,
+          apiKey: apiKey,
+          model: LanguageTranslationModels.M2M100_1_2B,
+        );
+        LanguageTranslationResponse res = await model.translate(
+          "Hello!",
+          Languages.English,
+          Languages.Marathi,
+        );
+        expect(res.result?.response, isNotNull);
         expect(res.success, true);
       },
       timeout: Timeout(

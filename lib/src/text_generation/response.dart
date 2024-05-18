@@ -2,7 +2,7 @@
 import '../models/error.dart';
 
 class TextGenerationResponse {
-  late TextGenerationResult result;
+  late TextGenerationResult? result;
   late bool success;
   late List<ErrorModel> errors;
   late List messages;
@@ -20,15 +20,14 @@ class TextGenerationResponse {
   TextGenerationResponse.fromJson(Map<String, dynamic> json) {
     result = TextGenerationResult.fromJson(json['result']);
     success = json['success'];
-    errors = (json['errors'] as List)
-        .map((e) => ErrorModel.fromJson(e))
-        .toList();
+    errors =
+        (json['errors'] as List).map((e) => ErrorModel.fromJson(e)).toList();
     messages = json['messages'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['result'] = result.toJson();
+    data['result'] = result?.toJson() ?? {};
     data['success'] = success;
     data['errors'] = errors.map((e) => e.toJson()).toList();
     data['messages'] = messages;

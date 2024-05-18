@@ -1,21 +1,23 @@
 import 'response.dart';
 import '../services/network_service.dart';
 import 'models.dart';
+import 'languages.dart';
 
 export 'models.dart';
 export 'response.dart';
+export 'languages.dart';
 
-class TextSummarizationModel {
+class LanguageTranslationModel {
   late String accountId; // Account ID, available on Cloudflare daskboard
   late String apiKey; // API Key, can by generated from the Cloudflare dashboard
-  late TextSummarizationModels model; // The model to use
+  late LanguageTranslationModels model; // The model to use
   NetworkService networkService = NetworkService();
   late String baseUrl;
 
-  TextSummarizationModel({
+  LanguageTranslationModel({
     required this.accountId,
     required this.apiKey,
-    this.model = TextSummarizationModels.BART_LARGE_CNN,
+    this.model = LanguageTranslationModels.M2M100_1_2B,
   }) {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
     if (accountId.trim() == "") {
@@ -27,15 +29,19 @@ class TextSummarizationModel {
   }
 
   // Asynchronous function which returns summarized text through the TextSummarizationResponse object
-  Future<TextSummarizationResponse> summarize(String text,
-      {int maxLength = 1024}) async {
+  Future<LanguageTranslationResponse> translate(
+    String text,
+    Languages from,
+    Languages to,
+  ) async {
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {
-      "input_text": text,
-      "max_length": maxLength,
+      "source_lang": from.value,
+      "target_lang": to.value,
+      "text": text,
     });
-    TextSummarizationResponse response =
-        TextSummarizationResponse.fromJson(res['data']);
+    LanguageTranslationResponse response =
+        LanguageTranslationResponse.fromJson(res['data']);
     return response;
   }
 }

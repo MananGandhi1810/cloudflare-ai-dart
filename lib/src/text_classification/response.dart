@@ -2,7 +2,7 @@
 import '../models/error.dart';
 
 class TextClassificationResponse {
-  late TextClassificationResult result;
+  late TextClassificationResult? result;
   late bool success;
   late List<ErrorModel> errors;
   late List messages;
@@ -27,7 +27,7 @@ class TextClassificationResponse {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['result'] = result.toJson();
+    data['result'] = result?.toJson() ?? {};
     data['success'] = success;
     data['errors'] = errors.map((e) => e.toJson()).toList();
     data['messages'] = messages;

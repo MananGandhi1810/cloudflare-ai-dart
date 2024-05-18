@@ -18,6 +18,12 @@ class TextToImageModel {
     required this.model,
   }) {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
+    if (accountId.trim() == "") {
+      throw Exception("Account ID cannot be empty");
+    }
+    if (apiKey.trim() == "") {
+      throw Exception("API Key cannot be empty");
+    }
   }
 
   // Asynchronous Function whcih returns the image in the form of Uint8List

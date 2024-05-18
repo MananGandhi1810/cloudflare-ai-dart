@@ -1,13 +1,13 @@
 // Defines Response received from the API
 import '../models/error.dart';
 
-class TextSummarizationResponse {
-  late TextSummarizationResult? result;
+class LanguageTranslationResponse {
+  late LanguageTranslationResult? result;
   late bool success;
   late List<ErrorModel> errors;
   late List messages;
 
-  TextSummarizationResponse({
+  LanguageTranslationResponse({
     required this.result,
     required this.success,
     errors,
@@ -17,8 +17,8 @@ class TextSummarizationResponse {
     this.messages = messages ?? [];
   }
 
-  TextSummarizationResponse.fromJson(Map<String, dynamic> json) {
-    result = TextSummarizationResult.fromJson(json['result']);
+  LanguageTranslationResponse.fromJson(Map<String, dynamic> json) {
+    result = LanguageTranslationResult.fromJson(json['result']);
     success = json['success'];
     errors =
         (json['errors'] as List).map((e) => ErrorModel.fromJson(e)).toList();
@@ -35,13 +35,13 @@ class TextSummarizationResponse {
   }
 }
 
-class TextSummarizationResult {
+class LanguageTranslationResult {
   String? response;
 
-  TextSummarizationResult({this.response});
+  LanguageTranslationResult({this.response});
 
-  TextSummarizationResult.fromJson(Map<String, dynamic> json) {
-    response = json['response'];
+  LanguageTranslationResult.fromJson(Map<String, dynamic> json) {
+    response = json['translated_text'];
   }
 
   Map<String, dynamic> toJson() {

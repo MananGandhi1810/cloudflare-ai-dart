@@ -19,3 +19,7 @@
 ## 1.0.1+2
 
 - Generated documentation for the package.
+
+## 1.1.0
+
+- Added support for Text Classification APIs

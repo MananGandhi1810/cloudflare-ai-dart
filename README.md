@@ -93,6 +93,7 @@ void main() async {
 ```
 
 Supported Models:
+
 - BART_LARGE_CNN
 
 ### Text To Image
@@ -117,9 +118,40 @@ void main() async {
 ```
 
 Supported Models:
+
 - DREAMSHAPER_8_LCM
 - STABLE_DIFFUSION_XL_BASE_1
 - STABLE_DIFFUSION_XL_LIGHTNING
+
+### Text Classification
+
+```dart
+import 'package:cloudflare_ai/cloudflare_ai.dart';
+
+void main() async {
+  // Initialize a TextClassificationModel
+  TextClassificationModel model = TextClassificationModel(
+    accountId: "Your Account ID",
+    apiKey: "Your API Key"
+    model: TextClassificationModels.DISTILBERT_SST_2_INT8,
+  );
+
+  // Classify Text
+  TextClassificationResponse res = await model.classifyText("A beautiful sunset over the ocean");
+
+  if (res.success) {
+    print(
+        'Positive Confidence level: ${res.result.positive}');
+    print(
+        'Negative Confidence level: ${res.result.negative}');
+  } else {
+    print(res.errors);
+  }
+}
+```
+
+Supported Models:
+- DISTILBERT_SST_2_INT8
 
 ## Features
 

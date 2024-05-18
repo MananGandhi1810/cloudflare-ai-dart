@@ -164,6 +164,34 @@ void main() async {
 <li>STABLE_DIFFUSION_XL_BASE_1</li>
 <li>STABLE_DIFFUSION_XL_LIGHTNING</li>
 </ul>
+<h3 id="text-classification">Text Classification</h3>
+<pre class="language-dart"><code class="language-dart">import 'package:cloudflare_ai/cloudflare_ai.dart';
+
+void main() async {
+  // Initialize a TextClassificationModel
+  TextClassificationModel model = TextClassificationModel(
+    accountId: "Your Account ID",
+    apiKey: "Your API Key"
+    model: TextClassificationModels.DISTILBERT_SST_2_INT8,
+  );
+
+  // Classify Text
+  TextClassificationResponse res = await model.classifyText("A beautiful sunset over the ocean");
+
+  if (res.success) {
+    print(
+        'Positive Confidence level: ${res.result.positive}');
+    print(
+        'Negative Confidence level: ${res.result.negative}');
+  } else {
+    print(res.errors);
+  }
+}
+</code></pre>
+<p>Supported Models:</p>
+<ul>
+<li>DISTILBERT_SST_2_INT8</li>
+</ul>
 <h2 id="features">Features</h2>
 <ul>
 <li><code>x</code> Text Generation</li>
@@ -219,7 +247,7 @@ void main() async {
 <footer>
   <span class="no-break">
     cloudflare_ai
-      1.0.1+1
+      1.1.0
   </span>
 
   

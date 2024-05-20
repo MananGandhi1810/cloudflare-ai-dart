@@ -2,6 +2,15 @@
 
 A Dart client for accessing the Cloudflare AI API.
 
+## Features
+
+- [x] Text Generation
+- [x] Text Summarization
+- [x] Image Generation
+- [x] Text Classification
+- [x] Language Translation
+- [x] Text Chat
+
 ## Usage
 
 ### Text Generation
@@ -216,12 +225,3 @@ void main() async {
 
 Supported Models:
 Same as Text Generation Models
-
-## Features
-
-- [x] Text Generation
-- [x] Text Summarization
-- [x] Image Generation
-- [x] Text Classification
-- [x] Language Translation
-- [x] Text Chat

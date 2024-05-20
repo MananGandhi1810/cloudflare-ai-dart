@@ -1,12 +1,13 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloudflare_ai/cloudflare_ai.dart';
+import 'package:cloudflare_ai/src/text_chat/text_chat.dart';
 import 'package:test/test.dart';
 
 void main() {
   final env = Platform.environment;
-  String accountId = env['ACCOUNTID'] ?? "1cce28ed87f1c4865e511c1abd3f0101";
-  String apiKey = env['APIKEY'] ?? "TxzHZU9gfVuHMVlC_M-pW1H7d9RpDE7OD_OIW2rY";
+  String accountId = env['ACCOUNTID'] ?? "";
+  String apiKey = env['APIKEY'] ?? "";
   group('Text Generation:', () {
     test(
       "Gemma 7b IT",
@@ -188,5 +189,22 @@ And so, with a newfound appreciation for the beauty of Earth and its inhabitants
         Duration(minutes: 3),
       ),
     );
+  });
+
+  group("Text Chat: ", () {
+    test("Gemma 7B IT", () async {
+      TextChatModel model = TextChatModel(
+        accountId: accountId,
+        apiKey: apiKey,
+        model: TextChatModels.GEMMA_7B_IT,
+      );
+      model.loadMessages([
+        {"role": "user", "content": "Hello!"},
+        {"role": "system", "content": "Hello! How may I help you?"},
+      ]);
+      ChatMessage message = await model.chat("Who are you?");
+      expect(message.content, isNotNull);
+      expect(message.role, Role.assistant);
+    });
   });
 }

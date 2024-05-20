@@ -1,10 +1,11 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloudflare_ai/cloudflare_ai.dart';
+import 'package:cloudflare_ai/src/text_chat/text_chat.dart';
 
 void main() async {
-  String accountId = "";
-  String apiKey = "";
+  String accountId = "Your Account ID";
+  String apiKey = "Your API Key";
 
   // Text Generation
   // Initialize a TextGenerationModel
@@ -108,4 +109,29 @@ void main() async {
   } else {
     print(languageTranslationRes..errors.map((e) => e.toJson()).toList());
   }
+
+  // Text Chat
+  // Initialize a TextChatModel
+  TextChatModel textChatModel = TextChatModel(
+    accountId: accountId,
+    apiKey: apiKey,
+    model: TextChatModels.GEMMA_7B_IT,
+  );
+
+  // Load any previous conversations
+  textChatModel.loadMessages([
+    {
+      "role": "user",
+      "content": "Hello!",
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! How may I help you?",
+    },
+  ]);
+
+  // Send a new message
+  ChatMessage chatRes = await textChatModel.chat("Who are you?");
+
+  print(chatRes.content);
 }

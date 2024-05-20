@@ -1,4 +1,4 @@
-import 'package:cloudflare_ai/src/text_classification/models.dart';
+import 'models.dart';
 import 'response.dart';
 import '../services/network_service.dart';
 export 'models.dart';

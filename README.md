@@ -189,3 +189,4 @@ Supported Models:
 - [x] Image Generation
 - [x] Text Classification
 - [x] Language Translation
+- [x] Text Chat

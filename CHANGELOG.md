@@ -26,5 +26,9 @@
 
 ## 1.2.0
 
-- Added support Language Translation APIs
+- Added support for Language Translation APIs
 - Made response results nullable, to handle errors better.
+
+## 1.3.0
+
+- Added support for Text Chat APIs

@@ -182,6 +182,41 @@ Supported Models:
 
 - M2M100_1_2B
 
+### Text Chat
+
+```dart
+import 'package:cloudflare_ai/cloudflare_ai.dart';
+
+void main() async {
+  // Initialize a TextChatModel
+  TextChatModel model = TextChatModel(
+    accountId: "Your Account ID",
+    apiKey: "Your API Key",
+    model: TextChatModels.GEMMA_7B_IT,
+  );
+
+  // Load previous messages
+  model.loadMessages([
+    {
+      "role": "user",
+      "content": "Hello!",
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! How may I help you?",
+    },
+  ]);
+
+  // Start Chat
+  ChatMessage message = await model.chat("Hello");
+
+  print(message.content);
+}
+```
+
+Supported Models:
+Same as Text Generation Models
+
 ## Features
 
 - [x] Text Generation

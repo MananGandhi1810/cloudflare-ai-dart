@@ -32,3 +32,7 @@
 ## 1.3.0
 
 - Added support for Text Chat APIs
+
+## 1.3.1
+
+- Added documentation for TextChat

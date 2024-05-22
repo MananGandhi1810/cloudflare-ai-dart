@@ -7,39 +7,37 @@ export 'response.dart';
 
 /// Text summarization model class
 class TextSummarizationModel {
+  /// Account ID, available on Cloudflare daskboard
   late String accountId;
 
-  /// Account ID, available on Cloudflare daskboard
+  /// API Key, can by generated from the Cloudflare dashboard
   late String apiKey;
 
-  /// API Key, can by generated from the Cloudflare dashboard
+  /// The model to use
   late TextSummarizationModels model;
 
-  /// The model to use
+  /// Network service object
   NetworkService networkService = NetworkService();
 
-  /// Network service object
+  /// Base URL for the API
   late String baseUrl;
 
-  /// Base URL for the API
   /// Constructor
   TextSummarizationModel({
     required this.accountId,
     required this.apiKey,
     this.model = TextSummarizationModels.BART_LARGE_CNN,
   }) {
+    /// Set the base URL
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
 
-    /// Set the base URL
     if (accountId.trim() == "") {
-      throw Exception("Account ID cannot be empty");
-
       /// Throw an exception if account ID is empty
+      throw Exception("Account ID cannot be empty");
     }
     if (apiKey.trim() == "") {
-      throw Exception("API Key cannot be empty");
-
       /// Throw an exception if API key is empty
+      throw Exception("API Key cannot be empty");
     }
   }
 
@@ -48,19 +46,18 @@ class TextSummarizationModel {
       {int maxLength = 1024}) async {
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {
+      /// Input text
       "input_text": text,
 
-      /// Input text
-      "max_length": maxLength,
-
       /// Maximum length
+      "max_length": maxLength,
     });
+
+    /// Create a response object from the JSON data
     TextSummarizationResponse response =
         TextSummarizationResponse.fromJson(res['data']);
 
-    /// Create a response object from the JSON data
-    return response;
-
     /// Return the response object
+    return response;
   }
 }

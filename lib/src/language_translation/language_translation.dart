@@ -7,21 +7,20 @@ export 'response.dart';
 export 'languages.dart';
 
 class LanguageTranslationModel {
+  /// Account ID, available on Cloudflare daskboard
   late String accountId;
 
-  /// Account ID, available on Cloudflare daskboard
+  /// API Key, can by generated from the Cloudflare dashboard
   late String apiKey;
 
-  /// API Key, can by generated from the Cloudflare dashboard
+  /// The model to use
   late LanguageTranslationModels model;
 
-  /// The model to use
+  /// Network service object
   NetworkService networkService = NetworkService();
 
-  /// Network service object
-  late String baseUrl;
-
   /// Base URL for the API
+  late String baseUrl;
 
   LanguageTranslationModel({
     required this.accountId,
@@ -30,49 +29,44 @@ class LanguageTranslationModel {
   }) {
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
     if (accountId.trim() == "") {
-      throw Exception("Account ID cannot be empty");
-
       /// Throw an exception if account ID is empty
+      throw Exception("Account ID cannot be empty");
     }
     if (apiKey.trim() == "") {
-      throw Exception("API Key cannot be empty");
-
       /// Throw an exception if API key is empty
+      throw Exception("API Key cannot be empty");
     }
   }
 
   /// Asynchronous function which returns summarized text through the TextSummarizationResponse object
   Future<LanguageTranslationResponse> translate(
+    /// Text to translate
     String text,
 
-    /// Text to translate
+    /// Language to translate from
     Languages from,
 
-    /// Language to translate from
-    Languages to,
-
     /// Language to translate to
+    Languages to,
   ) async {
+    /// Post request to the API
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {
+      /// Source language
       "source_lang": from.value,
 
-      /// Source language
+      /// Target language
       "target_lang": to.value,
 
-      /// Target language
-      "text": text,
-
       /// Text to translate
+      "text": text,
     });
 
-    /// Post request to the API
+    /// Create a response object from the JSON data
     LanguageTranslationResponse response =
         LanguageTranslationResponse.fromJson(res['data']);
 
-    /// Create a response object from the JSON data
-    return response;
-
     /// Return the response object
+    return response;
   }
 }

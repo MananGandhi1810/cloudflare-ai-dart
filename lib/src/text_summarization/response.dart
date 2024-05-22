@@ -3,18 +3,18 @@ import '../models/error.dart';
 
 /// Text summarization response class
 class TextSummarizationResponse {
+  /// Result object
   late TextSummarizationResult? result;
 
-  /// Result object
+  /// Success status
   late bool success;
 
-  /// Success status
+  /// List of errors
   late List<ErrorModel> errors;
 
-  /// List of errors
+  /// List of messages
   late List messages;
 
-  /// List of messages
   /// Constructor
   TextSummarizationResponse({
     required this.result,
@@ -22,51 +22,48 @@ class TextSummarizationResponse {
     errors,
     messages,
   }) {
+    /// If errors is null, set it to an empty list
     this.errors = errors ?? [];
 
-    /// If errors is null, set it to an empty list
-    this.messages = messages ?? [];
-
     /// If messages is null, set it to an empty list
+    this.messages = messages ?? [];
   }
 
   /// Function to create a response object from JSON data
   TextSummarizationResponse.fromJson(Map<String, dynamic> json) {
+    /// Create a result object from the JSON data
     result = TextSummarizationResult.fromJson(json['result']);
 
-    /// Create a result object from the JSON data
+    /// Set success status
     success = json['success'];
 
-    /// Set success status
+    /// Create a list of errors from the JSON data
     errors =
         (json['errors'] as List).map((e) => ErrorModel.fromJson(e)).toList();
 
-    /// Create a list of errors from the JSON data
-    messages = json['messages'];
-
     /// Set messages
+    messages = json['messages'];
   }
 
   /// Function to convert the response object to JSON data
   Map<String, dynamic> toJson() {
+    /// Create a map to store the data
     final Map<String, dynamic> data = <String, dynamic>{};
 
-    /// Create a map to store the data
+    /// Add the result object to the map
     data['result'] = result?.toJson() ?? {};
 
-    /// Add the result object to the map
+    /// Add the success status to the map
     data['success'] = success;
 
-    /// Add the success status to the map
+    /// Add the list of errors to the map
     data['errors'] = errors.map((e) => e.toJson()).toList();
 
-    /// Add the list of errors to the map
+    /// Add the list of messages to the map
     data['messages'] = messages;
 
-    /// Add the list of messages to the map
-    return data;
-
     /// Return the map
+    return data;
   }
 }
 

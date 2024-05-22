@@ -8,27 +8,27 @@ export 'chat_message.dart';
 
 /// Text chat model class
 class TextChatModel {
+  /// Account ID
   late String accountId;
 
-  /// Account ID
+  /// API Key
   late String apiKey;
 
-  /// API Key
+  /// Model to use
   late TextChatModels model;
 
-  /// Model to use
+  /// Raw status
   late bool raw;
 
-  /// Raw status
+  /// List of chat messages
   List<ChatMessage> _messages = [];
 
-  /// List of chat messages
+  /// Network service object
   NetworkService networkService = NetworkService();
 
-  /// Network service object
+  /// Base URL
   late String baseUrl;
 
-  /// Base URL
   /// Constructor
   TextChatModel({
     required this.accountId,
@@ -40,68 +40,61 @@ class TextChatModel {
 
     /// Set the base URL
     if (accountId.trim() == "") {
-      throw Exception("Account ID cannot be empty");
-
       /// Throw an exception if account ID is empty
+      throw Exception("Account ID cannot be empty");
     }
     if (apiKey.trim() == "") {
-      throw Exception("API Key cannot be empty");
-
       /// Throw an exception if API key is empty
+      throw Exception("API Key cannot be empty");
     }
   }
 
   /// Get all chat messages
   List<ChatMessage> get allMessages => _messages;
 
-  /// Return all messages
-
   /// Load a previous chat
   void loadMessages(List<Map<String, dynamic>> messages) {
+    /// Load messages
     _messages =
         messages.map((message) => ChatMessage.fromJson(message)).toList();
-
-    /// Load messages
   }
 
   /// Asynchronous function which returns the classification labels with their confidence of the text
   Future<ChatMessage> chat(String message) async {
     _messages.add(
       ChatMessage(
+        /// Set role to user
         role: Role.user,
 
-        /// Set role to user
-        content: message,
-
         /// Set content to message
+        content: message,
       ),
     );
+
+    /// Post request to the API
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {
       "messages": _messages,
     });
 
-    /// Post request to the API
+    /// Create a response object from the JSON data
     TextChatResponse response = TextChatResponse.fromJson(res['data']);
 
-    /// Create a response object from the JSON data
     if (!response.success || response.result == null) {
-      throw Exception(response.errors);
-
       /// Throw an exception if the response is not successful
+      throw Exception(response.errors);
     }
     _messages.add(
       ChatMessage(
+        /// Set role to assistant
         role: Role.assistant,
 
-        /// Set role to assistant
-        content: response.result?.response ?? "",
-
         /// Set content to response
+        content: response.result?.response ?? "",
       ),
     );
-    return _messages.last;
 
     /// Return the last message
+    return _messages.last;
   }
 }

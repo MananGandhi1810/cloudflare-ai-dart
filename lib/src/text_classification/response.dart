@@ -3,18 +3,18 @@ import '../models/error.dart';
 
 /// Text classification response class
 class TextClassificationResponse {
+  /// Result object
   late TextClassificationResult? result;
 
-  /// Result object
+  /// Success status
   late bool success;
 
-  /// Success status
+  /// List of errors
   late List<ErrorModel> errors;
 
-  /// List of errors
+  /// List of messages
   late List messages;
 
-  /// List of messages
   /// Constructor
   TextClassificationResponse({
     required this.result,
@@ -22,91 +22,85 @@ class TextClassificationResponse {
     errors,
     messages,
   }) {
+    /// If errors is null, set it to an empty list
     this.errors = errors ?? [];
 
-    /// If errors is null, set it to an empty list
-    this.messages = messages ?? [];
-
     /// If messages is null, set it to an empty list
+    this.messages = messages ?? [];
   }
 
   /// Function to create a response object from JSON data
   TextClassificationResponse.fromJson(Map<String, dynamic> json) {
+    /// Create a result object from the JSON data
     result = TextClassificationResult.fromJson(json['result']);
 
-    /// Create a result object from the JSON data
+    /// Set success status
     success = json['success'];
 
-    /// Set success status
+    /// Create a list of errors from the JSON data
     errors =
         (json['errors'] as List).map((e) => ErrorModel.fromJson(e)).toList();
 
-    /// Create a list of errors from the JSON data
-    messages = json['messages'];
-
     /// Set messages
+    messages = json['messages'];
   }
 
   /// Function to convert the response object to JSON data
   Map<String, dynamic> toJson() {
+    /// Create a map to store the data
     final Map<String, dynamic> data = <String, dynamic>{};
 
-    /// Create a map to store the data
+    /// Add the result object to the map
     data['result'] = result?.toJson() ?? {};
 
-    /// Add the result object to the map
+    /// Add the success status to the map
     data['success'] = success;
 
-    /// Add the success status to the map
+    /// Add the list of errors to the map
     data['errors'] = errors.map((e) => e.toJson()).toList();
 
-    /// Add the list of errors to the map
+    /// Add the list of messages to the map
     data['messages'] = messages;
 
-    /// Add the list of messages to the map
-    return data;
-
     /// Return the map
+    return data;
   }
 }
 
 /// Text classification result class
 class TextClassificationResult {
+  /// Positive score
   late double positive;
 
-  /// Positive score
+  /// Negative score
   late double negative;
 
-  /// Negative score
-
+  /// Constructor
   TextClassificationResult({required this.positive, required this.negative});
 
-  /// Constructor
   /// Function to create a result object from JSON data
   TextClassificationResult.fromJson(List data) {
+    /// Set the negative score
     negative =
         data.firstWhere((label) => label['label'] == "NEGATIVE")['score'];
 
-    /// Set the negative score
+    /// Set the positive score
     positive =
         data.firstWhere((label) => label['label'] == "POSITIVE")['score'];
-
-    /// Set the positive score
   }
 
   /// Function to convert the result object to JSON data
   Map<String, dynamic> toJson() {
+    /// Create a map to store the data
     final Map<String, dynamic> data = <String, dynamic>{};
 
-    /// Create a map to store the data
+    /// Add the positive score to the map
     data['positive'] = positive;
 
-    /// Add the positive score to the map
+    /// Add the negative score to the map
     data['negative'] = negative;
 
-    /// Add the negative score to the map
-    return data;
-
     /// Return the map
+    return data;
   }
 }

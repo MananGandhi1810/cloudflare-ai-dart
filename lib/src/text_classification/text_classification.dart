@@ -6,63 +6,54 @@ export 'response.dart';
 
 /// Text classification model class
 class TextClassificationModel {
+  /// Account ID
   late String accountId;
 
-  /// Account ID
+  /// API Key
   late String apiKey;
 
-  /// API Key
+  /// Model to use
   late TextClassificationModels model;
 
-  /// Model to use
-  late bool raw;
-
-  /// Raw status
+  /// Network service object
   NetworkService networkService = NetworkService();
 
-  /// Network service object
+  /// Base URL
   late String baseUrl;
 
-  /// Base URL
   /// Constructor
   TextClassificationModel({
     required this.accountId,
     required this.apiKey,
-    this.model = TextClassificationModels.DISTILBERT_SST_2_INT8,
 
     /// Since there is only one model we set it to the default model, no need specify it
-    this.raw = true,
+    this.model = TextClassificationModels.DISTILBERT_SST_2_INT8,
   }) {
+    /// Set the base URL
     baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
 
-    /// Set the base URL
     if (accountId.trim() == "") {
-      throw Exception("Account ID cannot be empty");
-
       /// Throw an exception if account ID is empty
+      throw Exception("Account ID cannot be empty");
     }
     if (apiKey.trim() == "") {
-      throw Exception("API Key cannot be empty");
-
       /// Throw an exception if API key is empty
+      throw Exception("API Key cannot be empty");
     }
   }
 
   /// Asynchronous function which returns the classification labels with their confidence of the text
   Future<TextClassificationResponse> classifyText(String prompt) async {
+    /// Post request to the API
     Map<String, dynamic> res =
         await networkService.post("$baseUrl/${model.value}", apiKey, {
-      "text": prompt,
-
       /// Text to classify
+      "text": prompt,
     });
 
-    /// Post request to the API
-
+    /// Return the response object
     TextClassificationResponse response =
         TextClassificationResponse.fromJson(res['data']);
     return response;
-
-    /// Return the response object
   }
 }

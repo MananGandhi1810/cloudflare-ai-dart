@@ -1,11 +1,10 @@
 /// Error model
 class ErrorModel {
+  /// Error code
   late int code;
 
-  /// Error code
-  late String message;
-
   /// Error message
+  late String message;
 
   ErrorModel({
     required this.code,
@@ -13,26 +12,24 @@ class ErrorModel {
   });
 
   ErrorModel.fromJson(json) {
+    /// Set the error code
     code = json['code'];
 
-    /// Set the error code
-    message = json['message'];
-
     /// Set the error message
+    message = json['message'];
   }
 
   Map toJson() {
+    /// Create a map to store the data
     Map res = {};
 
-    /// Create a map to store the data
+    /// Add the error code to the map
     res['code'] = code;
 
-    /// Add the error code to the map
+    /// Add the error message to the map
     res['message'] = message;
 
-    /// Add the error message to the map
-    return res;
-
     /// Return the map
+    return res;
   }
 }

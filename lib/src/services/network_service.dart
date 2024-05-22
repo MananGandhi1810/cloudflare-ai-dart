@@ -7,50 +7,45 @@ class NetworkService {
   ///Dio object
 
   Future<Map<String, dynamic>> post(
+    ///API endpoint
     String url,
 
-    ///API endpoint
-    String apiKey,
-
     ///API key
+    String apiKey,
     Map data, {
-    bool isImage = false,
-
     ///Is the data an image
+    bool isImage = false,
   }) async {
     Response res = await _dio.post(
+      ///API endpoint
       url,
 
-      ///API endpoint
+      ///Request options
       options: Options(
+        ///Request headers
         headers: {
-          "Authorization": "Bearer $apiKey",
-
           ///API key
+          "Authorization": "Bearer $apiKey",
         },
 
-        ///Request headers
+        ///Response type
         responseType: isImage ? ResponseType.bytes : null,
 
-        ///Response type
-        validateStatus: (status) => true,
-
         ///Validate status
+        validateStatus: (status) => true,
       ),
 
-      ///Request options
-      data: data,
-
       ///Request data
+      data: data,
     );
-    Map<String, dynamic> response = {};
 
     ///Response object
-    response['data'] = res.data;
+    Map<String, dynamic> response = {};
 
     ///Response data
-    return response;
+    response['data'] = res.data;
 
     ///Return the response object
+    return response;
   }
 }

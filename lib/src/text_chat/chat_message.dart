@@ -1,23 +1,22 @@
 enum Role {
+  /// system message
   system,
 
-  /// system message
+  /// user message
   user,
 
-  /// user message
-  assistant;
-
   /// assistant message
+  assistant;
 }
 
 /// Chat message model
 class ChatMessage {
+  /// Role of the message
   late Role role;
 
-  /// Role of the message
+  /// Content of the message
   late String content;
 
-  /// Content of the message
   /// Constructor
   ChatMessage({
     required this.role,
@@ -28,51 +27,34 @@ class ChatMessage {
   ChatMessage.fromJson(json) {
     switch (json['role']) {
       case 'system':
-
-        /// If role is system
         role = Role.assistant;
-
-        /// Set role to assistant
         break;
       case 'user':
-
-        /// If role is user
         role = Role.user;
-
-        /// Set role to user
         break;
       case 'assistant':
-
-        /// If role is assistant
         role = Role.assistant;
-
-        /// Set role to assistant
         break;
       default:
-
-        /// If role is invalid
         throw Exception("Invalid role");
-
-      /// Throw an exception
     }
-    content = json['content'];
 
     /// Set the content of the message
+    content = json['content'];
   }
 
   /// Function to convert the chat message object to JSON data
   Map toJson() {
+    /// Create a map to store the data
     Map res = {};
 
-    /// Create a map to store the data
+    /// Add the role to the map
     res['role'] = role.name;
 
-    /// Add the role to the map
+    /// Add the content to the map
     res['content'] = content;
 
-    /// Add the content to the map
-    return res;
-
     /// Return the map
+    return res;
   }
 }

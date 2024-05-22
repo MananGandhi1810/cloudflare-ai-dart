@@ -1,310 +1,308 @@
 /// Defines the languages, and specifies their language codes
 enum Languages {
+  /// Afrikaans
   Afrikaans("af"),
 
-  /// Afrikaans
+  /// Amharic
   Amharic("am"),
 
-  /// Amharic
+  /// Arabic
   Arabic("ar"),
 
-  /// Arabic
+  /// Asturian
   Asturian("ast"),
 
-  /// Asturian
+  /// Azerbaijani
   Azerbaijani("az"),
 
-  /// Azerbaijani
+  /// Bashkir
   Bashkir("ba"),
 
-  /// Bashkir
+  /// Belarusian
   Belarusian("be"),
 
-  /// Belarusian
+  /// Bulgarian
   Bulgarian("bg"),
 
-  /// Bulgarian
+  /// Bengali
   Bengali("bn"),
 
-  /// Bengali
+  /// Breton
   Breton("br"),
 
-  /// Breton
+  /// Bosnian
   Bosnian("bs"),
 
-  /// Bosnian
+  /// Valencian
   Valencian("ca"),
 
-  /// Valencian
+  /// Cebuano
   Cebuano("ceb"),
 
-  /// Cebuano
+  /// Czech
   Czech("cs"),
 
-  /// Czech
+  /// Welsh
   Welsh("cy"),
 
-  /// Welsh
+  /// Danish
   Danish("da"),
 
-  /// Danish
+  /// German
   German("de"),
 
-  /// German
+  /// Greek
   Greeek("el"),
 
-  /// Greek
+  /// English
   English("en"),
 
-  /// English
+  /// Spanish
   Spanish("es"),
 
-  /// Spanish
+  /// Estonian
   Estonian("et"),
 
-  /// Estonian
+  /// Persian
   Persian("fa"),
 
-  /// Persian
+  /// Fulah
   Fulah("ff"),
 
-  /// Fulah
+  /// Finnish
   Finnish("fi"),
 
-  /// Finnish
+  /// French
   French("fr"),
 
-  /// French
+  /// Western Frisian
   WesternFrisian("fy"),
 
-  /// Western Frisian
+  /// Irish
   Irish("ga"),
 
-  /// Irish
+  /// Scottish Gaelic
   ScottishGaelic("gd"),
 
-  /// Scottish Gaelic
+  /// Galician
   Galician("gl"),
 
-  /// Galician
+  /// Gujarati
   Gujarati("gu"),
 
-  /// Gujarati
+  /// Hausa
   Hausa("ha"),
 
-  /// Hausa
+  /// Hebrew
   Hebrew("he"),
 
-  /// Hebrew
+  /// Hindi
   Hindi("hi"),
 
-  /// Hindi
+  /// Croatian
   Croatian("hr"),
 
-  /// Croatian
+  /// Haitian Creole
   HaitianCreole("ht"),
 
-  /// Haitian Creole
+  /// Hungarian
   Hungarian("hu"),
 
-  /// Hungarian
+  /// Armenian
   Armenian("hy"),
 
-  /// Armenian
+  /// Indonesian
   Indonesian("id"),
 
-  /// Indonesian
+  /// Igbo
   Igbo("ig"),
 
-  /// Igbo
+  /// Iloko
   Iloko("ilo"),
 
-  /// Iloko
+  /// Icelandic
   Icelandic("is"),
 
-  /// Icelandic
+  /// Italian
   Italian("it"),
 
-  /// Italian
+  /// Japanese
   Japanese("ja"),
 
-  /// Japanese
+  /// Javanese
   Javanese("jv"),
 
-  /// Javanese
+  /// Georgian
   Georgian("ka"),
 
-  /// Georgian
+  /// Kazakh
   Kazakh("kk"),
 
-  /// Kazakh
+  /// Central Khmer
   CentralKhmer("km"),
 
-  /// Central Khmer
+  /// Kannada
   Kannada("kn"),
 
-  /// Kannada
+  /// Korean
   Korean("ko"),
 
-  /// Korean
+  /// Letzeburgesch
   Letzeburgesch("lb"),
 
-  /// Letzeburgesch
+  /// Ganda
   Ganda("lg"),
 
-  /// Ganda
+  /// Lingala
   Lingala("ln"),
 
-  /// Lingala
+  /// Lao
   Lao("lo"),
 
-  /// Lao
+  /// Lithuanian
   Lithuanian("lt"),
 
-  /// Lithuanian
+  /// Latvian
   Latvian("lv"),
 
-  /// Latvian
+  /// Malagasy
   Malagasy("mg"),
 
-  /// Malagasy
+  /// Macedonian
   Macedonian("mk"),
 
-  /// Macedonian
+  /// Malayalam
   Malayalam("ml"),
 
-  /// Malayalam
+  /// Mongolian
   Mongolian("mn"),
 
-  /// Mongolian
+  /// Marathi
   Marathi("mr"),
 
-  /// Marathi
+  /// Malay
   Malay("ms"),
 
-  /// Malay
+  /// Burmese
   Burmese("my"),
 
-  /// Burmese
+  /// Nepali
   Nepali("ne"),
 
-  /// Nepali
+  /// Flemish
   Flemish("nl"),
 
-  /// Flemish
+  /// Norwegian
   Norwegian("no"),
 
-  /// Norwegian
+  /// Northern Sotho
   NorthernSotho("ns"),
 
-  /// Northern Sotho
+  /// Occitan
   Occitan("oc"),
 
-  /// Occitan
+  /// Oriya
   Oriya("or"),
 
-  /// Oriya
+  /// Punjabi
   Punjabi("pa"),
 
-  /// Punjabi
+  /// Polish
   Polish("pl"),
 
-  /// Polish
+  /// Pashto
   Pashto("ps"),
 
-  /// Pashto
+  /// Portuguese
   Portuguese("pt"),
 
-  /// Portuguese
+  /// Moldovan
   Moldovan("ro"),
 
-  /// Moldovan
+  /// Russian
   Russian("ru"),
 
-  /// Russian
+  /// Sindhi
   Sindhi("sd"),
 
-  /// Sindhi
+  /// Sinhalese
   Sinhalese("si"),
 
-  /// Sinhalese
+  /// Slovak
   Slovak("sk"),
 
-  /// Slovak
+  /// Slovenian
   Slovenian("sl"),
 
-  /// Slovenian
+  /// Somali
   Somali("so"),
 
-  /// Somali
+  /// Albanian
   Albanian("sq"),
 
-  /// Albanian
+  /// Serbian
   Serbian("sr"),
 
-  /// Serbian
+  /// Swati
   Swati("ss"),
 
-  /// Swati
+  /// Sundanese
   Sundanese("su"),
 
-  /// Sundanese
+  /// Swedish
   Swedish("sv"),
 
-  /// Swedish
+  /// Swahili
   Swahili("sw"),
 
-  /// Swahili
+  /// Tamil
   Tamil("ta"),
 
-  /// Tamil
+  /// Thai
   Thai("th"),
 
-  /// Thai
+  /// Tagalog
   Tagalog("tl"),
 
-  /// Tagalog
+  /// Tswana
   Tswana("tn"),
 
-  /// Tswana
+  /// Turkish
   Turkish("tr"),
 
-  /// Turkish
+  /// Ukrainian
   Ukrainian("uk"),
 
-  /// Ukrainian
+  /// Urdu
   Urdu("ur"),
 
-  /// Urdu
+  /// Uzbek
   Uzbek("uz"),
 
-  /// Uzbek
+  /// Vietnamese
   Vietnamese("vi"),
 
-  /// Vietnamese
+  /// Wolof
   Wolof("wo"),
 
-  /// Wolof
+  /// Xhosa
   Xhosa("xh"),
 
-  /// Xhosa
+  /// Yiddish
   Yiddish("yi"),
 
-  /// Yiddish
+  /// Yoruba
   Yoruba("yo"),
 
-  /// Yoruba
+  /// Chinese
   Chinese("zh"),
 
-  /// Chinese
+  /// Zulu
   Zulu("zu");
 
-  /// Zulu
-
+  /// Constructor
   const Languages(this.value);
 
-  /// Constructor
-  final String value;
-
   /// Language code
+  final String value;
 }

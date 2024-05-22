@@ -1,27 +1,27 @@
 import 'package:dio/dio.dart';
-
+//Network service class
 class NetworkService {
-  final Dio _dio = Dio();
+  final Dio _dio = Dio(); //Dio object
 
   Future<Map<String, dynamic>> post(
-    String url,
-    String apiKey,
+    String url, //API endpoint
+    String apiKey, //API key
     Map data, {
-    bool isImage = false,
+    bool isImage = false, //Is the data an image
   }) async {
     Response res = await _dio.post(
-      url,
-      options: Options(
+      url, //API endpoint
+      options: Options( 
         headers: {
-          "Authorization": "Bearer $apiKey",
-        },
-        responseType: isImage ? ResponseType.bytes : null,
-        validateStatus: (status) => true,
-      ),
-      data: data,
+          "Authorization": "Bearer $apiKey", //API key
+        }, //Request headers
+        responseType: isImage ? ResponseType.bytes : null, //Response type
+        validateStatus: (status) => true, //Validate status
+      ), //Request options
+      data: data, //Request data
     );
-    Map<String, dynamic> response = {};
-    response['data'] = res.data;
-    return response;
+    Map<String, dynamic> response = {}; //Response object
+    response['data'] = res.data; //Response data
+    return response; //Return the response object
   }
 }

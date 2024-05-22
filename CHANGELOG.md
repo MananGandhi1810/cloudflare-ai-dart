@@ -44,3 +44,7 @@
 ## 1.3.3
 
 - Added better documentation
+
+## 1.3.4
+
+- Added even better documentation

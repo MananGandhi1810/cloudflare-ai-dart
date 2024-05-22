@@ -1,4 +1,4 @@
-/// Defines Repsonse received from the API
+// Defines Repsonse received from the API
 import '../models/error.dart';
 
 /// Text chat response class

@@ -36,3 +36,11 @@
 ## 1.3.1
 
 - Added documentation for TextChat
+
+## 1.3.2
+
+- Added documentation
+
+## 1.3.3
+
+- Added better documentation

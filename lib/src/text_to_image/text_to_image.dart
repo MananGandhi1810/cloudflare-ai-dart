@@ -29,7 +29,7 @@ class TextToImageModel {
     required this.model,
   }) {
     baseUrl =
-        "https:///api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
+        "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
 
     /// Set the base URL
     if (accountId.trim() == "") {

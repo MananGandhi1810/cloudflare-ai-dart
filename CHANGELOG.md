@@ -48,3 +48,7 @@
 ## 1.3.4
 
 - Added even better documentation
+
+## 1.3.5
+
+- Fixed dangling dartdoc issue

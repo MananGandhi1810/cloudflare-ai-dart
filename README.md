@@ -11,6 +11,22 @@ A Dart client for accessing the Cloudflare AI API.
 - [x] Language Translation
 - [x] Text Chat
 
+## Installation
+Run this command:
+
+```bash
+dart pub add cloudflare_ai
+```
+
+or
+
+Add this to your package's pubspec.yaml file:
+
+```yaml
+dependencies:
+  cloudflare_ai: ^1.3.5
+```
+
 ## Usage
 
 ### Text Generation

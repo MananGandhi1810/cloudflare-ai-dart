@@ -33,8 +33,7 @@ class TextClassificationModel {
     /// Since there is only one model we set it to the default model, no need specify it
     this.raw = true,
   }) {
-    baseUrl =
-        "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
+    baseUrl = "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
 
     /// Set the base URL
     if (accountId.trim() == "") {

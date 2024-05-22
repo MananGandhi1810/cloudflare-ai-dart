@@ -1,4 +1,4 @@
-/// Defines Response received from the API
+// Defines Response received from the API
 import '../models/error.dart';
 
 class LanguageTranslationResponse {

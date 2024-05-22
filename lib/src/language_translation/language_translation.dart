@@ -29,7 +29,7 @@ class LanguageTranslationModel {
     this.model = LanguageTranslationModels.M2M100_1_2B,
   }) {
     baseUrl =
-        "https:///api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
+        "https://api.cloudflare.com/client/v4/accounts/$accountId/ai/run";
     if (accountId.trim() == "") {
       throw Exception("Account ID cannot be empty");
 

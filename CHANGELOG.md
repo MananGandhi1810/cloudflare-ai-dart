@@ -52,3 +52,7 @@
 ## 1.3.5
 
 - Fixed dangling dartdoc issue
+
+## 1.4.0
+
+- Added support for Llama 3.1 Models

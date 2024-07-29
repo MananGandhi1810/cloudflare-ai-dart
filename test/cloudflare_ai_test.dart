@@ -59,6 +59,23 @@ void main() {
         Duration(minutes: 3),
       ),
     );
+
+    test(
+      "Llama 3.1 8B Instruct",
+      () async {
+        TextGenerationModel model = TextGenerationModel(
+          accountId: accountId,
+          apiKey: apiKey,
+          model: TextGenerationModels.LLAMA_31_8B_INSTRUCT,
+        );
+        TextGenerationResponse res = await model.generateText("Hello!");
+        expect(res.result?.response, isNotNull);
+        expect(res.success, true);
+      },
+      timeout: Timeout(
+        Duration(minutes: 3),
+      ),
+    );
   });
 
   group("Text Summarization:", () {

@@ -88,7 +88,10 @@ enum TextChatModels {
   LLAMA_2_7B_CHAT_HF_LORA("@cf/meta-llama/llama-2-7b-chat-hf-lora"),
 
   // LLAMA 3 8B INSTRUCT
-  LLAMA_3_8B_INSTRUCT("@hf/meta-llama/meta-llama-3-8b-instruct"),
+  LLAMA_3_8B_INSTRUCT("@cf/meta/llama-3-8b-instruct"),
+
+  // LLAMA 3 8B INSTRUCT
+  LLAMA_31_8B_INSTRUCT("@cf/meta/llama-3.1-8b-instruct"),
 
   // UNA CYBERTRON 7B V2 BF16
   UNA_CYBERTRON_7B_V2_BF16("@cf/fblgit/una-cybertron-7b-v2-bf16"),
